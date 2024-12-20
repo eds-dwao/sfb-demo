@@ -9,6 +9,12 @@
   height: 50px;
   background-color: #246a66;
   color: white;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.blank-space {
+  flex-grow: 1 !important;
 }
 
 .sfb-header-1-wrapper {
@@ -24,6 +30,12 @@
   border-radius: 15px;
   padding: 5px 15px;
   font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  flex-grow: 1;
+  gap: 1.5rem;
 }
 
 .nav-links ul {
@@ -67,10 +79,14 @@
 
 .contact-info {
   margin-right: 20px;
+  gap: 1rem;
+  align-items: center;
+  display: flex;
 }
 
 .contact-link img {
   width: 25px;
+  height: 25px;
 }
 
 .contact-info a {
