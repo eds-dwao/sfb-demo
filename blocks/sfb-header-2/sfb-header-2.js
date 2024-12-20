@@ -11,7 +11,7 @@ export default function decorate(block) {
         ultag.classList.add('header-nav-list');
       }
       if (d === 2) {
-        div.classList.add('action-container', 'd-flex', 'align-items-center');
+        div.classList.add('action-container');
         const ptag = div.querySelectorAll('p');
         ptag.forEach((p, i) => {
           if (i === 0) {
