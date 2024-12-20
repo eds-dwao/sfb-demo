@@ -17,4 +17,10 @@ module.exports = {
     'comma-dangle': ['off'],
     'prefer-template': ['off'],
   },
+  "overrides": [
+    {
+      "files": ["**/*.css"],
+      "excludedFiles": "*.css",
+      "rules": {}
+    }
 };
