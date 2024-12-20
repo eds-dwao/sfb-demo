@@ -108,3 +108,7 @@
 .accordion-item-body ul {
   padding: 0 15px;
 }
+
+.accordion.block > .accordion-item:last-child{
+  border-bottom: none !important;
+} 
