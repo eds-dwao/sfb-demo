@@ -1,4 +1,4 @@
-/* eslint-disable-next-line no-descending-specificity */
+/* eslint-disable no-descending-specificity */
 
 .sfb-header-1-container {
   margin: 0 !important;
@@ -9,7 +9,6 @@
   height: 50px;
   background-color: #246a66;
   color: white;
-  padding: 10px 20px;
 }
 
 .sfb-header-1-wrapper {
