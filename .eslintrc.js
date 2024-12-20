@@ -14,5 +14,13 @@ module.exports = {
     'import/extensions': ['error', { js: 'always' }], // require js file extensions in imports
     'linebreak-style': ['error', 'unix'], // enforce unix linebreaks
     'no-param-reassign': [2, { props: false }], // allow modifying properties of param
+    'comma-dangle': ['off'],
+    'prefer-template': ['off'],
   },
+  overrides: [
+    {
+      files: ['**/*.css'],
+      rules: {}, // Add any specific rules for CSS files here
+    },
+  ],
 };
