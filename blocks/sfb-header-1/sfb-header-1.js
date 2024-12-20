@@ -11,7 +11,7 @@ export default function decorate(block) {
       if (d === 2) {
         div.classList.add('contact-info');
         const ptag = div.querySelectorAll('p');
-        ptag.forEach((p, i) => {
+        ptag.forEach((p) => {
           p.classList.add('contact-link');
         });
       }
