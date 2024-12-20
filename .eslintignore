@@ -1,3 +1,4 @@
 helix-importer-ui
 *.css
-blocks/*.css
+blocks/**/*.css
+styles/styles.css
