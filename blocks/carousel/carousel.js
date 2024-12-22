@@ -126,7 +126,7 @@ export default async function decorate(block) {
 
     container.append(slideNavButtons);
   }
-
+  
   rows.forEach((row, idx) => {
     const slide = createSlide(row, idx, carouselId);
     slidesWrapper.append(slide);
