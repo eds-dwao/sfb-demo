@@ -1,0 +1,45 @@
+.sfb-title-container{
+    padding: 70px 0 !important;
+    margin: 0 !important;
+    background-color: #eee;
+}
+
+.why-sfb-wrapper {
+    margin: 50px auto 16px !important;
+    padding: 0 !important;
+}
+
+.sfb-card-list{
+    display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  border-radius: 10px;
+}
+
+.sfb-icon-card{
+   text-align: center;
+  flex: 1;
+}
+
+.sfb-card-img {
+   margin: 0 !important;
+}
+
+.sfb-card-img img{
+    width: 76.8px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.sfb-card-num {
+ font-size: 35px;
+ margin: 0 0 20px !important;
+ font-weight: 700;
+}
+
+.sfb-card-text {
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-size: 16px;
+    margin: 0 0 20px !important;
+}
