@@ -14,7 +14,7 @@
   color: #333;
   letter-spacing: 0px;
   margin-bottom: 0;
-  font-family: 'Roboto-Regular';
+  /* font-family: 'Roboto-Regular'; */
 }
 
 .columns > div > .columns-img-col {
@@ -44,7 +44,7 @@
   text-align: center;
   border: 1px #f78f35 solid;
   transition: 0.3s;
-  font-family: 'Roboto-Regular';
+  /* font-family: 'Roboto-Regular'; */
 }
 
 .columns .button-container a:hover {
