@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // JSON object with href values
 const links = {
   'card-row-1': [
@@ -28,6 +29,7 @@ const links = {
     'https://example.com/feat-card-5',
   ],
 };
+/* eslint-enable no-console */
 
 // Function to wrap cards in <a> tags
 function wrapCardsWithLinks() {
