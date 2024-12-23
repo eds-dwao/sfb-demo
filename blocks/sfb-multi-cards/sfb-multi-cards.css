@@ -19,6 +19,15 @@
   margin-bottom: 13px;
 }
 
+.card-row a{
+  text-decoration: none !important;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 13px;
+  color: #333;
+}
+
 /* Styling for the first card in the first row */
 .card-text {
   flex: 0 2 100%;
@@ -170,7 +179,7 @@
   opacity: 1;
 }
 
-.card-row-4 .feat-card:nth-last-child(-n+2) {
+.card-row-4 a:nth-last-child(-n+2) {
   visibility: hidden;
 }
 
