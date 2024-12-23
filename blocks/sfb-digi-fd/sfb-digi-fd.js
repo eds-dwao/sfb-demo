@@ -9,10 +9,10 @@ export default function decorate(block) {
         div.classList.add('digi-main-body');
         const pTag = div.querySelectorAll('p');
         pTag.forEach((p, i) => {
-            if (i === 0) {
-                p.classList.add('hash-earn');
-            }
-        })
+          if (i === 0) {
+            p.classList.add('hash-earn');
+          }
+        });
       }
     });
   });
