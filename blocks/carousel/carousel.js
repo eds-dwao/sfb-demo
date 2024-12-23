@@ -6,33 +6,32 @@ function updateActiveSlide(slide) {
   block.dataset.activeSlide = slideIndex;
 
   const slides = block.querySelectorAll('.carousel-slide');
+
   slides.forEach((aSlide, idx) => {
-    const isActive = idx === slideIndex;
-    aSlide.setAttribute('aria-hidden', !isActive);
+    aSlide.setAttribute('aria-hidden', idx !== slideIndex);
     aSlide.querySelectorAll('a').forEach((link) => {
-      if (isActive) {
-        link.removeAttribute('tabindex');
-      } else {
+      if (idx !== slideIndex) {
         link.setAttribute('tabindex', '-1');
+      } else {
+        link.removeAttribute('tabindex');
       }
     });
   });
 
   const indicators = block.querySelectorAll('.carousel-slide-indicator');
   indicators.forEach((indicator, idx) => {
-    const button = indicator.querySelector('button');
-    if (idx === slideIndex) {
-      button.setAttribute('disabled', 'true');
+    if (idx !== slideIndex) {
+      indicator.querySelector('button').removeAttribute('disabled');
     } else {
-      button.removeAttribute('disabled');
+      indicator.querySelector('button').setAttribute('disabled', 'true');
     }
   });
 }
 
 function showSlide(block, slideIndex = 0) {
   const slides = block.querySelectorAll('.carousel-slide');
-  const slideCount = slides.length;
-  const realSlideIndex = (slideIndex + slideCount) % slideCount;
+  let realSlideIndex = slideIndex < 0 ? slides.length - 1 : slideIndex;
+  if (slideIndex >= slides.length) realSlideIndex = 0;
   const activeSlide = slides[realSlideIndex];
 
   activeSlide
@@ -43,27 +42,48 @@ function showSlide(block, slideIndex = 0) {
     left: activeSlide.offsetLeft,
     behavior: 'smooth',
   });
+
+  updateActiveSlide(activeSlide);
+}
+
+function startAutoSlide(block, interval) {
+  const slides = block.querySelectorAll('.carousel-slide');
+  if (slides.length < 2) return; // No auto-slide for single-slide carousels
+
+  let autoSlideInterval = setInterval(() => {
+    const currentSlideIndex = parseInt(block.dataset.activeSlide, 10) || 0;
+    showSlide(block, currentSlideIndex + 1);
+  }, interval);
+
+  const resetAutoSlide = () => {
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(() => {
+      const currentSlideIndex = parseInt(block.dataset.activeSlide, 10) || 0;
+      showSlide(block, currentSlideIndex + 1);
+    }, interval);
+  };
+
+  // Reset auto-slide timer on user interaction
+  block.addEventListener('click', resetAutoSlide);
+  block.addEventListener('mouseover', () => clearInterval(autoSlideInterval));
+  block.addEventListener('mouseleave', resetAutoSlide);
 }
 
 function bindEvents(block) {
   const slideIndicators = block.querySelector('.carousel-slide-indicators');
-  if (slideIndicators) {
-    slideIndicators.querySelectorAll('button').forEach((button) => {
-      button.addEventListener('click', (e) => {
-        const targetSlide = parseInt(
-          e.currentTarget.parentElement.dataset.targetSlide,
-          10
-        );
-        showSlide(block, targetSlide);
-      });
-    });
-  }
+  if (!slideIndicators) return;
 
-  block.querySelector('.slide-prev')?.addEventListener('click', () => {
-    showSlide(block, parseInt(block.dataset.activeSlide, 10) - 1);
+  slideIndicators.querySelectorAll('button').forEach((button) => {
+    button.addEventListener('click', (e) => {
+      const slideIndicator = e.currentTarget.parentElement;
+      showSlide(block, parseInt(slideIndicator.dataset.targetSlide, 10));
+    });
   });
 
-  block.querySelector('.slide-next')?.addEventListener('click', () => {
+  block.querySelector('.slide-prev').addEventListener('click', () => {
+    showSlide(block, parseInt(block.dataset.activeSlide, 10) - 1);
+  });
+  block.querySelector('.slide-next').addEventListener('click', () => {
     showSlide(block, parseInt(block.dataset.activeSlide, 10) + 1);
   });
 
@@ -75,16 +95,15 @@ function bindEvents(block) {
     },
     { threshold: 0.5 }
   );
-
-  block
-    .querySelectorAll('.carousel-slide')
-    .forEach((slide) => slideObserver.observe(slide));
+  block.querySelectorAll('.carousel-slide').forEach((slide) => {
+    slideObserver.observe(slide);
+  });
 }
 
 function createSlide(row, slideIndex, carouselId) {
   const slide = document.createElement('li');
   slide.dataset.slideIndex = slideIndex;
-  slide.id = `carousel-${carouselId}-slide-${slideIndex}`;
+  slide.setAttribute('id', `carousel-${carouselId}-slide-${slideIndex}`);
   slide.classList.add('carousel-slide');
 
   row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
@@ -95,7 +114,9 @@ function createSlide(row, slideIndex, carouselId) {
   });
 
   const labeledBy = slide.querySelector('h1, h2, h3, h4, h5, h6');
-  if (labeledBy) slide.setAttribute('aria-labelledby', labeledBy.id);
+  if (labeledBy) {
+    slide.setAttribute('aria-labelledby', labeledBy.getAttribute('id'));
+  }
 
   return slide;
 }
@@ -103,12 +124,12 @@ function createSlide(row, slideIndex, carouselId) {
 let carouselId = 0;
 export default async function decorate(block) {
   carouselId += 1;
-  block.id = `carousel-${carouselId}`;
-
-  const rows = Array.from(block.querySelectorAll(':scope > div'));
+  block.setAttribute('id', `carousel-${carouselId}`);
+  const rows = block.querySelectorAll(':scope > div');
   const isSingleSlide = rows.length < 2;
 
   const placeholders = await fetchPlaceholders();
+
   block.setAttribute('role', 'region');
   block.setAttribute(
     'aria-roledescription',
@@ -129,7 +150,6 @@ export default async function decorate(block) {
       'aria-label',
       placeholders.carouselSlideControls || 'Carousel Slide Controls'
     );
-
     slideIndicators = document.createElement('ol');
     slideIndicators.classList.add('carousel-slide-indicators');
     slideIndicatorsNav.append(slideIndicators);
@@ -145,6 +165,7 @@ export default async function decorate(block) {
         placeholders.nextSlide || 'Next Slide'
       }"></button>
     `;
+
     container.append(slideNavButtons);
   }
 
@@ -161,12 +182,15 @@ export default async function decorate(block) {
       } ${idx + 1} ${placeholders.of || 'of'} ${rows.length}"></button>`;
       slideIndicators.append(indicator);
     }
-
+    
     row.remove();
   });
 
   container.append(slidesWrapper);
   block.prepend(container);
 
-  if (!isSingleSlide) bindEvents(block);
+  if (!isSingleSlide) {
+    bindEvents(block);
+    startAutoSlide(block, 3500);
+  }
 }

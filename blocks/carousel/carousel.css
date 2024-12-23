@@ -3,10 +3,10 @@
     /* padding-top: 46px; */
 }
 
-/* .carousel .carousel-wrapper{
-  width: 100%;
+.section.carousel-container .carousel-wrapper{
+  max-width: 100% !important;
   padding: 0 !important;
-} */
+}
 
 .carousel .carousel-slides,
 .carousel .carousel-slide-indicators {

@@ -19,7 +19,7 @@
 
 .columns > div > .columns-img-col {
   order: 0;
-  width: 72%;
+  width: 73%;
 }
 
 .columns > div > .columns-img-col img {
@@ -66,4 +66,9 @@
     flex-wrap: wrap;
     gap: 0px 20px;
   }
+}
+
+.section.columns-container.columns-wrapper {
+  max-width: 1200px !important;
+  margin: auto;
 }
