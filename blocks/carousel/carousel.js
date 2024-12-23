@@ -182,7 +182,7 @@ export default async function decorate(block) {
       } ${idx + 1} ${placeholders.of || 'of'} ${rows.length}"></button>`;
       slideIndicators.append(indicator);
     }
-    
+
     row.remove();
   });
 
