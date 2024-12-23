@@ -2,6 +2,7 @@
 .sfb-multi-cards-container{
   padding: 90px 0 70px;
   background-color: #ebebeb;
+  margin: 0 !important;
 }
 
 .sfb-multi-cards-wrapper {
@@ -24,7 +25,6 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
-  margin-bottom: 13px;
   color: #333;
 }
 
