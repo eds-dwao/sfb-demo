@@ -15,3 +15,12 @@
     font-size: 35px;
     font-weight: 500;
 }
+
+.columns-container .sfb-heading h2 {
+    margin: 0 0 4px !important;
+}
+
+.head-para-2 {
+    padding: 0 0 40px;
+    margin: 0;
+}
