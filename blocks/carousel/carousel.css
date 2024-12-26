@@ -9,6 +9,7 @@
 .section.carousel-container .carousel-wrapper {
   max-width: 100% !important;
   padding: 0 !important;
+  margin-bottom: 120px !important;
   margin: 0 !important;
 }
 
