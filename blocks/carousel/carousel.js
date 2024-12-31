@@ -191,6 +191,6 @@ export default async function decorate(block) {
 
   if (!isSingleSlide) {
     bindEvents(block);
-    startAutoSlide(block, 3500);
+    startAutoSlide(block, 5000);
   }
 }
