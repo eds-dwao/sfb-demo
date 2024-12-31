@@ -1,5 +1,6 @@
 .sfb-digi-fd-container {
   margin: 0 !important;
+  position: relative;
 }
 
 .sfb-digi-fd-wrapper::after {
@@ -11,7 +12,7 @@
   height: 12rem;
   background-size: 18rem;
   top: -120px;
-  right: -220px;
+  right: 0;
 }
 @media only screen and (max-width: 768px) {
   .sfb-digi-fd-wrapper::after {
@@ -24,7 +25,6 @@
 .sfb-digi-fd-wrapper {
   max-width: 1320px;
   padding: 70px 0 !important;
-  position: relative;
 }
 
 .digi-fd-main {
