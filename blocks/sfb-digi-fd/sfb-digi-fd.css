@@ -13,7 +13,14 @@
   top: -120px;
   right: -220px;
 }
-
+@media only screen and (max-width: 768px) {
+  .sfb-digi-fd-wrapper::after {
+    display: none;
+  }
+  .digi-fd-main {
+    display: block !important;
+  }
+}
 .sfb-digi-fd-wrapper {
   max-width: 1320px;
   padding: 70px 0 !important;

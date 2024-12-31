@@ -20,7 +20,11 @@
   background-color: #fff;
   height: 56px;
 }
-
+@media only screen and (max-width: 768px) {
+  .header-cont {
+    display: block;
+  }
+}
 .header-logo {
   padding: 0 12px;
 }

@@ -1,5 +1,5 @@
 /* General styling for the block */
-.sfb-multi-cards-container{
+.sfb-multi-cards-container {
   padding: 90px 0 70px;
   background-color: #ebebeb;
   margin: 0 !important;
@@ -19,8 +19,12 @@
   justify-content: space-between;
   margin-bottom: 13px;
 }
-
-.card-row a{
+@media only screen and (max-width: 768px) {
+  .card-row {
+    display: block;
+  }
+}
+.card-row a {
   text-decoration: none !important;
   display: flex;
   width: 100%;
@@ -179,7 +183,7 @@
   opacity: 1;
 }
 
-.card-row-4 a:nth-last-child(-n+2) {
+.card-row-4 a:nth-last-child(-n + 2) {
   visibility: hidden;
 }
 
