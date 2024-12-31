@@ -101,3 +101,11 @@
 .contact-info a:hover {
   color: #f78f35 !important;
 }
+@media only screen and (max-width: 768px) {
+  .nav-links {
+    height: 10%;
+  }
+  .contact-info .contact-link {
+    height: 10% !important;
+  }
+}
