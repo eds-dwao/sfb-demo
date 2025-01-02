@@ -171,6 +171,7 @@
 .carousel.customer-speak.block {
   max-width: 1200px;
   margin: auto;
+  margin-bottom: 100px;
 }
 
 .customer-speak .carousel-slides-container {
@@ -265,7 +266,6 @@
 
   .carousel .carousel-slide .carousel-slide-content {
     --slide-content-width: calc((100% - 184px) / 2);
-
     margin: 92px;
   }
 
