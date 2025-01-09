@@ -193,3 +193,11 @@
   font-size: 12px;
   padding-bottom: 10px;
 }
+@media only screen and (max-width: 768px) {
+  .digi-main-img {
+    width: 100%;
+  }
+  .digi-main-body {
+    width: 100%;
+  }
+}

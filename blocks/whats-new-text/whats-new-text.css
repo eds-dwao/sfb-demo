@@ -14,7 +14,7 @@
   background-size: 9em;
   width: 10rem;
   left: 0%;
-  height:10rem;
+  height: 10rem;
   top: -68%;
 }
 
@@ -69,4 +69,12 @@
 .whats-new-text-wrapper .button-container a:hover {
   background-color: #f1f1f1 !important;
   color: #f78f35;
+}
+@media only screen and (max-width: 768px) {
+  .whats-new-text-wrapper::before {
+    position: relative;
+  }
+  .whats-new-text-wrapper::after {
+    position: relative;
+  }
 }

@@ -146,3 +146,20 @@
   margin: 0;
   max-width: 100%;
 }
+@media only screen and (max-width: 768px) {
+  .savings-made .button-container a {
+    width: 100%;
+  }
+  .savings-made > div > div > p:nth-of-type(7) {
+    line-height: 2;
+  }
+  .savings-made > div > div h2 {
+    width: 100%;
+  }
+  .savings-made > div > div > p {
+    font-size: 19px;
+  }
+  .columns .button-container a {
+    width: 100%;
+  }
+}
